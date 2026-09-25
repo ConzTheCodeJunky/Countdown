@@ -3,505 +3,1484 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#030303">
 
-<title>Countdown to the Day We Meet ❤️</title>
+<title>2.10.26 — The Day We Meet ❤️</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:opsz,wght@6..96,400;6..96,500;6..96,600&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
 
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@300;400;500;600;700&display=swap');
 
-* {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
+/* =========================================================
+   MIDNIGHT — A CINEMATIC LOVE EXPERIENCE
+========================================================= */
+
+:root {
+    --black: #020202;
+    --black2: #080808;
+    --red: #d10b32;
+    --red2: #ff1748;
+    --white: #ffffff;
+    --soft: rgba(255,255,255,.72);
+    --faint: rgba(255,255,255,.38);
 }
 
-html, body {
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html,
+body {
     width: 100%;
-    height: 100%;
-    overflow: hidden;
+    min-height: 100%;
 }
 
 body {
-    font-family: 'Poppins', sans-serif;
+    background: #020202;
     color: white;
-    background:
-        radial-gradient(circle at 20% 20%, rgba(255, 50, 150, .30), transparent 30%),
-        radial-gradient(circle at 80% 70%, rgba(150, 50, 255, .30), transparent 32%),
-        linear-gradient(135deg, #08000d, #1c001b 50%, #07000d);
-    position: relative;
+    font-family: "Montserrat", sans-serif;
+    overflow-x: hidden;
 }
 
-canvas {
+/* =========================================================
+   CINEMATIC BACKGROUND
+========================================================= */
+
+.scene {
     position: fixed;
     inset: 0;
+    overflow: hidden;
+    background:
+        radial-gradient(
+            ellipse at 50% 45%,
+            rgba(145,0,30,.15),
+            transparent 42%
+        ),
+        linear-gradient(
+            180deg,
+            #020204 0%,
+            #070507 48%,
+            #020202 100%
+        );
     z-index: 0;
 }
 
-.glow {
-    position: fixed;
-    width: 420px;
-    height: 420px;
-    border-radius: 50%;
-    filter: blur(100px);
-    opacity: .3;
-    z-index: 0;
-    background: #ff258f;
-    animation: drift 9s ease-in-out infinite alternate;
+/* giant atmospheric red light */
+
+.aurora {
+    position: absolute;
+    width: 80vw;
+    height: 55vw;
+    max-width: 1100px;
+    max-height: 750px;
+    left: 50%;
+    top: 37%;
+    transform: translate(-50%,-50%);
+
+    background:
+        radial-gradient(
+            ellipse,
+            rgba(195,0,42,.18) 0%,
+            rgba(100,0,25,.08) 35%,
+            transparent 72%
+        );
+
+    filter: blur(30px);
+
+    animation: aurora 12s ease-in-out infinite alternate;
 }
 
-.g1 {
-    left: -180px;
-    top: 10%;
-}
+@keyframes aurora {
+    0% {
+        transform: translate(-50%,-50%) scale(.92);
+        opacity: .65;
+    }
 
-.g2 {
-    right: -180px;
-    bottom: 0;
-    background: #8c2cff;
-    animation-delay: -4s;
-}
-
-@keyframes drift {
-    to {
-        transform: translate(80px, -50px) scale(1.15);
+    100% {
+        transform: translate(-50%,-50%) scale(1.12);
+        opacity: 1;
     }
 }
 
-.wrap {
-    position: relative;
-    z-index: 2;
-    height: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 24px;
-    overflow: auto;
-}
+/* =========================================================
+   MOON
+========================================================= */
 
-.card {
-    width: min(920px, 100%);
-    padding: 44px 28px 38px;
-    text-align: center;
+.moon {
+    position: absolute;
 
-    border: 1px solid rgba(255,255,255,.17);
+    width: clamp(90px, 12vw, 170px);
+    height: clamp(90px, 12vw, 170px);
+
+    top: 9%;
+    right: 13%;
+
+    border-radius: 50%;
 
     background:
-        linear-gradient(
-            145deg,
-            rgba(255,255,255,.10),
-            rgba(255,255,255,.035)
+        radial-gradient(
+            circle at 38% 34%,
+            #fff,
+            #eeeeee 48%,
+            #c8c8c8 100%
         );
 
     box-shadow:
-        0 25px 90px rgba(0,0,0,.55),
-        0 0 70px rgba(255,25,130,.12);
+        0 0 25px rgba(255,255,255,.28),
+        0 0 100px rgba(255,255,255,.12),
+        0 0 180px rgba(255,255,255,.06);
 
-    backdrop-filter: blur(18px);
-    -webkit-backdrop-filter: blur(18px);
-
-    border-radius: 32px;
+    animation: moonFloat 9s ease-in-out infinite;
 }
 
-.mini {
-    letter-spacing: 4px;
-    text-transform: uppercase;
-    font-size: 11px;
-    color: #ffb6d8;
-    margin-bottom: 14px;
-}
-
-h1 {
-    font-family: "Great Vibes", cursive;
-    font-weight: 400;
-    font-size: clamp(48px, 9vw, 92px);
-    line-height: 1;
-    text-shadow: 0 0 25px rgba(255,82,163,.7);
-    margin-bottom: 10px;
-}
-
-.sub {
-    font-size: clamp(14px, 2vw, 18px);
-    font-weight: 300;
-    color: #ffe5f0;
-}
-
-.heart {
-    display: inline-block;
-    color: #ff4f9a;
-    font-size: 26px;
-    animation: beat 1.25s infinite;
-    filter: drop-shadow(0 0 10px #ff277f);
-}
-
-@keyframes beat {
+@keyframes moonFloat {
     0%,100% {
-        transform: scale(1);
+        transform: translateY(0);
     }
 
-    15% {
-        transform: scale(1.28);
-    }
-
-    30% {
-        transform: scale(1);
+    50% {
+        transform: translateY(-9px);
     }
 }
+
+/* moon shadow */
+
+.moon::after {
+    content: "";
+
+    position: absolute;
+
+    width: 100%;
+    height: 100%;
+
+    left: 25%;
+    top: -4%;
+
+    border-radius: 50%;
+
+    background: #050505;
+}
+
+/* =========================================================
+   STARS
+========================================================= */
+
+.stars {
+    position: absolute;
+    inset: 0;
+
+    background-image:
+        radial-gradient(
+            circle,
+            rgba(255,255,255,.9) 0 1px,
+            transparent 1.5px
+        );
+
+    background-size: 120px 120px;
+
+    opacity: .42;
+
+    animation: stars 50s linear infinite;
+}
+
+.stars2 {
+    position: absolute;
+    inset: -50%;
+
+    background-image:
+        radial-gradient(
+            circle,
+            rgba(255,255,255,.65) 0 1px,
+            transparent 1.4px
+        );
+
+    background-size: 185px 185px;
+
+    opacity: .18;
+
+    animation: stars2 90s linear infinite;
+}
+
+@keyframes stars {
+    from {
+        transform: translateY(0);
+    }
+
+    to {
+        transform: translateY(120px);
+    }
+}
+
+@keyframes stars2 {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* =========================================================
+   OCEAN
+========================================================= */
+
+.ocean {
+    position: absolute;
+
+    left: 0;
+    right: 0;
+    bottom: 0;
+
+    height: 31%;
+
+    background:
+        linear-gradient(
+            180deg,
+            transparent,
+            rgba(3,3,5,.75) 20%,
+            #020202 75%
+        );
+
+    overflow: hidden;
+}
+
+/* ocean lines */
+
+.wave {
+    position: absolute;
+
+    width: 180%;
+    height: 90px;
+
+    left: -40%;
+
+    border-top:
+        1px solid rgba(255,255,255,.07);
+
+    border-radius: 50%;
+
+    animation: wave 13s ease-in-out infinite;
+}
+
+.wave:nth-child(1) {
+    top: 22%;
+}
+
+.wave:nth-child(2) {
+    top: 40%;
+    animation-delay: -4s;
+    opacity: .65;
+}
+
+.wave:nth-child(3) {
+    top: 58%;
+    animation-delay: -8s;
+    opacity: .35;
+}
+
+@keyframes wave {
+    0%,100% {
+        transform: translateX(-2%) scaleY(1);
+    }
+
+    50% {
+        transform: translateX(2%) scaleY(.65);
+    }
+}
+
+/* moon reflection */
+
+.reflection {
+    position: absolute;
+
+    width: 170px;
+    height: 220px;
+
+    left: 50%;
+    top: -15px;
+
+    transform: translateX(-50%);
+
+    background:
+        linear-gradient(
+            180deg,
+            rgba(255,255,255,.18),
+            rgba(255,255,255,.02),
+            transparent
+        );
+
+    filter: blur(9px);
+
+    opacity: .32;
+
+    clip-path: polygon(
+        43% 0,
+        57% 0,
+        72% 100%,
+        28% 100%
+    );
+
+    animation: reflection 4s ease-in-out infinite;
+}
+
+@keyframes reflection {
+    0%,100% {
+        opacity: .22;
+        transform: translateX(-50%) scaleX(.8);
+    }
+
+    50% {
+        opacity: .38;
+        transform: translateX(-50%) scaleX(1.15);
+    }
+}
+
+/* =========================================================
+   PALM SILHOUETTES
+========================================================= */
+
+.palm {
+    position: absolute;
+
+    bottom: -25px;
+
+    width: 330px;
+    height: 470px;
+
+    opacity: .28;
+
+    z-index: 2;
+}
+
+.palm.left {
+    left: -110px;
+    transform: rotate(-8deg);
+}
+
+.palm.right {
+    right: -110px;
+    transform: scaleX(-1) rotate(-8deg);
+}
+
+.palm .trunk {
+    position: absolute;
+
+    width: 25px;
+    height: 400px;
+
+    left: 150px;
+    bottom: 0;
+
+    background: #000;
+
+    border-radius: 100%;
+
+    transform: rotate(8deg);
+}
+
+.palm .leaves {
+    position: absolute;
+
+    width: 300px;
+    height: 300px;
+
+    left: 0;
+    top: 0;
+}
+
+.leaf {
+    position: absolute;
+
+    width: 155px;
+    height: 24px;
+
+    left: 135px;
+    top: 105px;
+
+    background: #000;
+
+    border-radius: 100% 0 100% 0;
+
+    transform-origin: left center;
+}
+
+.leaf:nth-child(1) { transform: rotate(-65deg); }
+.leaf:nth-child(2) { transform: rotate(-42deg); }
+.leaf:nth-child(3) { transform: rotate(-20deg); }
+.leaf:nth-child(4) { transform: rotate(5deg); }
+.leaf:nth-child(5) { transform: rotate(30deg); }
+.leaf:nth-child(6) { transform: rotate(53deg); }
+.leaf:nth-child(7) { transform: rotate(78deg); }
+
+/* =========================================================
+   PARTICLE CANVAS
+========================================================= */
+
+#particles {
+    position: fixed;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 4;
+}
+
+/* =========================================================
+   MAIN
+========================================================= */
+
+main {
+    position: relative;
+    z-index: 10;
+
+    min-height: 100vh;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    padding: 45px 22px;
+}
+
+/* =========================================================
+   HERO
+========================================================= */
+
+.hero {
+    width: min(1150px,100%);
+
+    text-align: center;
+
+    position: relative;
+}
+
+/* tiny top line */
+
+.kicker {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    gap: 18px;
+
+    margin-bottom: 28px;
+
+    color: rgba(255,255,255,.48);
+
+    font-size: 9px;
+
+    letter-spacing: 6px;
+
+    text-transform: uppercase;
+
+    animation: fadeUp 1.2s .1s both;
+}
+
+.kicker span {
+    width: 45px;
+    height: 1px;
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            #c9143a
+        );
+}
+
+.kicker span:last-child {
+    background:
+        linear-gradient(
+            90deg,
+            #c9143a,
+            transparent
+        );
+}
+
+/* =========================================================
+   HUGE TITLE
+========================================================= */
+
+.title {
+    font-family: "Bodoni Moda", serif;
+
+    font-size: clamp(
+        72px,
+        12vw,
+        165px
+    );
+
+    font-weight: 400;
+
+    line-height: .78;
+
+    letter-spacing: -7px;
+
+    color: white;
+
+    position: relative;
+
+    animation:
+        titleReveal 1.5s .25s cubic-bezier(.16,1,.3,1) both;
+}
+
+.title .line2 {
+    display: block;
+
+    color: #d71940;
+
+    font-style: italic;
+
+    margin-top: 12px;
+
+    text-shadow:
+        0 0 30px rgba(215,25,64,.35),
+        0 0 90px rgba(215,25,64,.15);
+}
+
+@keyframes titleReveal {
+
+    from {
+        opacity: 0;
+        transform: translateY(60px);
+        filter: blur(15px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+        filter: blur(0);
+    }
+}
+
+/* =========================================================
+   INTRO
+========================================================= */
+
+.intro {
+    max-width: 650px;
+
+    margin:
+        40px auto
+        0;
+
+    color:
+        rgba(255,255,255,.61);
+
+    font-size: 13px;
+
+    line-height: 2;
+
+    font-weight: 300;
+
+    animation: fadeUp 1.2s .65s both;
+}
+
+/* =========================================================
+   COUNTDOWN
+========================================================= */
 
 .countdown {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 14px;
-    margin: 38px auto 28px;
-    max-width: 760px;
+
+    grid-template-columns:
+        repeat(4, minmax(100px,1fr));
+
+    max-width: 850px;
+
+    margin:
+        55px auto 0;
+
+    animation:
+        fadeUp 1.2s .85s both;
 }
 
-.box {
-    padding: 22px 8px;
-    border-radius: 20px;
+.time {
+    position: relative;
 
-    background: rgba(255,255,255,.075);
-
-    border: 1px solid rgba(255,255,255,.13);
-
-    box-shadow:
-        inset 0 0 30px rgba(255,54,145,.035);
+    padding: 4px 25px 10px;
 }
 
-.num {
-    font-size: clamp(34px, 6vw, 60px);
-    font-weight: 600;
+.time:not(:last-child)::after {
+    content: "";
+
+    position: absolute;
+
+    right: 0;
+    top: 12%;
+
+    width: 1px;
+    height: 76%;
+
+    background:
+        linear-gradient(
+            transparent,
+            rgba(255,255,255,.2),
+            transparent
+        );
+}
+
+.number {
+    font-family:
+        "Bodoni Moda",
+        serif;
+
+    font-size:
+        clamp(48px,7vw,86px);
+
+    font-weight: 400;
+
     line-height: 1;
+
+    letter-spacing: -3px;
+
+    color: white;
+
+    text-shadow:
+        0 0 30px rgba(255,255,255,.08);
 }
 
 .label {
-    font-size: 10px;
-    letter-spacing: 3px;
+    margin-top: 12px;
+
+    color:
+        rgba(255,255,255,.35);
+
+    font-size: 8px;
+
+    letter-spacing: 4px;
+
     text-transform: uppercase;
-    color: #dcb8ca;
-    margin-top: 9px;
+}
+
+/* =========================================================
+   DATE
+========================================================= */
+
+.date-wrap {
+    margin-top: 35px;
+
+    animation:
+        fadeUp 1.2s 1.05s both;
 }
 
 .date {
     display: inline-flex;
+
     align-items: center;
-    gap: 10px;
 
-    padding: 11px 20px;
-    border-radius: 999px;
+    gap: 15px;
 
-    background: rgba(255,65,145,.10);
-    border: 1px solid rgba(255,111,172,.24);
+    padding: 12px 22px;
 
-    color: #ffd7e8;
-    font-size: 13px;
+    border:
+        1px solid
+        rgba(215,25,64,.38);
+
+    background:
+        rgba(0,0,0,.35);
+
+    backdrop-filter: blur(12px);
+
+    color:
+        rgba(255,255,255,.78);
+
+    font-size: 9px;
+
+    letter-spacing: 4px;
+
+    text-transform: uppercase;
 }
+
+.date i {
+    width: 5px;
+    height: 5px;
+
+    border-radius: 50%;
+
+    background: #e01742;
+
+    box-shadow:
+        0 0 12px #e01742;
+}
+
+/* =========================================================
+   LOVE MESSAGE
+========================================================= */
 
 .message {
-    margin: 27px auto 0;
-    max-width: 650px;
+    max-width: 690px;
 
-    font-size: 14px;
-    line-height: 1.8;
+    margin:
+        45px auto 0;
 
-    color: #f6dce8;
-    font-weight: 300;
+    font-family:
+        "Bodoni Moda",
+        serif;
+
+    font-size:
+        clamp(18px,2.2vw,24px);
+
+    line-height: 1.7;
+
+    color:
+        rgba(255,255,255,.75);
+
+    font-weight: 400;
+
+    animation:
+        fadeUp 1.2s 1.25s both;
 }
+
+.message em {
+    color: #ff4266;
+
+    font-style: italic;
+}
+
+.message strong {
+    color: white;
+
+    font-weight: 500;
+}
+
+/* =========================================================
+   FOOTER
+========================================================= */
 
 .footer {
-    margin-top: 25px;
-    font-size: 12px;
-    color: #c9a9b9;
-    letter-spacing: 1px;
+    margin-top: 38px;
+
+    color:
+        rgba(255,255,255,.25);
+
+    font-size: 8px;
+
+    letter-spacing: 5px;
+
+    text-transform: uppercase;
+
+    animation:
+        fadeUp 1.2s 1.4s both;
 }
 
-.sparkle {
-    color: white;
-    font-size: 13px;
+.heart {
+    color: #e01843;
+
+    font-size: 15px;
+
+    display: inline-block;
+
+    margin: 0 8px;
+
+    animation:
+        heartbeat 1.5s infinite;
+
+    filter:
+        drop-shadow(
+            0 0 10px
+            rgba(224,24,67,.8)
+        );
 }
 
-@media(max-width:560px) {
+/* =========================================================
+   ANIMATIONS
+========================================================= */
 
-    .wrap {
-        padding: 13px;
+@keyframes fadeUp {
+
+    from {
+        opacity: 0;
+        transform: translateY(25px);
     }
 
-    .card {
-        padding: 34px 15px 28px;
-        border-radius: 25px;
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes heartbeat {
+
+    0%,100% {
+        transform: scale(1);
+    }
+
+    12% {
+        transform: scale(1.3);
+    }
+
+    24% {
+        transform: scale(1);
+    }
+
+    36% {
+        transform: scale(1.18);
+    }
+
+    48% {
+        transform: scale(1);
+    }
+}
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media(max-width:700px) {
+
+    main {
+        padding:
+            35px 15px 55px;
+    }
+
+    .moon {
+        top: 6%;
+        right: -20px;
+    }
+
+    .palm {
+        transform:
+            scale(.65)
+            rotate(-8deg);
+
+        transform-origin:
+            bottom left;
+
+        opacity: .18;
+    }
+
+    .palm.right {
+        transform:
+            scaleX(-1)
+            scale(.65)
+            rotate(-8deg);
+
+        transform-origin:
+            bottom right;
+    }
+
+    .kicker {
+        font-size: 7px;
+        letter-spacing: 3px;
+        gap: 10px;
+    }
+
+    .kicker span {
+        width: 22px;
+    }
+
+    .title {
+        font-size:
+            clamp(65px,19vw,105px);
+
+        letter-spacing: -4px;
+
+        line-height: .82;
+    }
+
+    .intro {
+        margin-top: 30px;
+
+        font-size: 11px;
+
+        padding: 0 15px;
+
+        line-height: 1.9;
     }
 
     .countdown {
-        gap: 7px;
-        margin-top: 30px;
+        margin-top: 40px;
+
+        grid-template-columns:
+            repeat(4,1fr);
     }
 
-    .box {
-        padding: 17px 4px;
-        border-radius: 15px;
+    .time {
+        padding:
+            3px 7px 8px;
+    }
+
+    .number {
+        font-size:
+            clamp(34px,11vw,55px);
+
+        letter-spacing: -2px;
     }
 
     .label {
-        font-size: 8px;
+        font-size: 6px;
         letter-spacing: 1.5px;
     }
 
+    .date {
+        font-size: 7px;
+        letter-spacing: 2px;
+        padding: 11px 13px;
+    }
+
     .message {
-        font-size: 13px;
+        padding: 0 8px;
+
+        font-size: 17px;
+
+        line-height: 1.65;
+
+        margin-top: 38px;
+    }
+
+    .footer {
+        font-size: 6px;
+        letter-spacing: 3px;
     }
 }
+
 </style>
 </head>
 
 <body>
 
-<div class="glow g1"></div>
-<div class="glow g2"></div>
+<!-- =======================================================
+     CINEMATIC BACKGROUND
+======================================================= -->
 
-<canvas id="canvas"></canvas>
+<div class="scene">
 
-<main class="wrap">
+    <div class="stars"></div>
+    <div class="stars2"></div>
 
-<section class="card">
+    <div class="aurora"></div>
 
-    <div class="mini">
-        Our little countdown
-        <span class="heart">♥</span>
+    <div class="moon"></div>
+
+    <div class="ocean">
+
+        <div class="reflection"></div>
+
+        <div class="wave"></div>
+        <div class="wave"></div>
+        <div class="wave"></div>
+
     </div>
 
-    <h1>
-        Countdown to the Day We Meet
+    <!-- LEFT PALM -->
+
+    <div class="palm left">
+
+        <div class="trunk"></div>
+
+        <div class="leaves">
+
+            <div class="leaf"></div>
+            <div class="leaf"></div>
+            <div class="leaf"></div>
+            <div class="leaf"></div>
+            <div class="leaf"></div>
+            <div class="leaf"></div>
+            <div class="leaf"></div>
+
+        </div>
+
+    </div>
+
+
+    <!-- RIGHT PALM -->
+
+    <div class="palm right">
+
+        <div class="trunk"></div>
+
+        <div class="leaves">
+
+            <div class="leaf"></div>
+            <div class="leaf"></div>
+            <div class="leaf"></div>
+            <div class="leaf"></div>
+            <div class="leaf"></div>
+            <div class="leaf"></div>
+            <div class="leaf"></div>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<canvas id="particles"></canvas>
+
+
+<!-- =======================================================
+     CONTENT
+======================================================= -->
+
+<main>
+
+<section class="hero">
+
+    <div class="kicker">
+
+        <span></span>
+
+        OUR FIRST CHAPTER
+
+        <span></span>
+
+    </div>
+
+
+    <h1 class="title">
+
+        The Day
+
+        <span class="line2">
+            We Meet
+        </span>
+
     </h1>
 
-    <p class="sub">
-        Until the day distance becomes a memory
-        and I finally get to see you ❤️
+
+    <p class="intro">
+
+        Somewhere between the miles,
+        the late-night conversations,
+        the smiles through a screen
+        and everything we never expected,
+        there is a moment waiting for us.
+
     </p>
+
+
+    <!-- COUNTDOWN -->
 
     <div class="countdown">
 
-        <div class="box">
-            <div class="num" id="days">00</div>
-            <div class="label">Days</div>
+        <div class="time">
+
+            <div
+                class="number"
+                id="days"
+            >
+                00
+            </div>
+
+            <div class="label">
+                Days
+            </div>
+
         </div>
 
-        <div class="box">
-            <div class="num" id="hours">00</div>
-            <div class="label">Hours</div>
+
+        <div class="time">
+
+            <div
+                class="number"
+                id="hours"
+            >
+                00
+            </div>
+
+            <div class="label">
+                Hours
+            </div>
+
         </div>
 
-        <div class="box">
-            <div class="num" id="mins">00</div>
-            <div class="label">Minutes</div>
+
+        <div class="time">
+
+            <div
+                class="number"
+                id="minutes"
+            >
+                00
+            </div>
+
+            <div class="label">
+                Minutes
+            </div>
+
         </div>
 
-        <div class="box">
-            <div class="num" id="secs">00</div>
-            <div class="label">Seconds</div>
+
+        <div class="time">
+
+            <div
+                class="number"
+                id="seconds"
+            >
+                00
+            </div>
+
+            <div class="label">
+                Seconds
+            </div>
+
         </div>
 
     </div>
 
-    <div class="date">
-        ♡ 2nd October 2026 ♡
+
+    <!-- DATE -->
+
+    <div class="date-wrap">
+
+        <div class="date">
+
+            <i></i>
+
+            02 • 10 • 2026
+
+            <i></i>
+
+        </div>
+
     </div>
+
+
+    <!-- MESSAGE -->
 
     <p class="message">
-        Every second that disappears from this countdown
-        is one second closer to the moment we finally meet.
-        Until then, keep smiling, keep thinking of us,
-        and remember that something beautiful is waiting
-        at the end of this countdown.
-        <span class="sparkle">✦</span>
+
+        Every second disappearing from this countdown
+        is one second closer to the moment I finally get
+        to <strong>see you in real life.</strong>
+
+        <br><br>
+
+        I still can't quite believe that someone I hadn't
+        even met could become someone I look forward to
+        this much. From those first conversations,
+        the endless smiles, the late nights and everything
+        we've already shared, somehow you've become
+        such a beautiful part of my everyday life.
+
+        <br><br>
+
+        And now there is an actual day waiting for us.
+
+        <em>2nd October.</em>
+
+        No screen between us.
+        No miles between us.
+        Just you and me,
+        finally standing in the same place.
+
+        <br><br>
+
+        So until then, keep that beautiful smile,
+        keep counting with me, and remember that
+        somewhere out there I'm counting every single
+        second too.
+
+        <br><br>
+
+        <strong>
+            Because this isn't just a countdown to a date.
+            It's the countdown to a memory
+            we're going to make together.
+        </strong>
+
+        <span class="heart">♥</span>
+
     </p>
 
+
     <div class="footer">
-        Made with love • One countdown • One unforgettable day
+
+        TWO PEOPLE • ONE MOMENT • ONE MEMORY
+
     </div>
 
 </section>
 
 </main>
 
+
 <script>
 
+/* =========================================================
+   COUNTDOWN
+========================================================= */
+
 const target =
-    new Date("2026-10-02T00:00:00+01:00").getTime();
+    new Date(
+        "2026-10-02T00:00:00+01:00"
+    ).getTime();
+
 
 function updateCountdown() {
 
-    let difference = target - Date.now();
+    let difference =
+        target - Date.now();
+
 
     if (difference < 0) {
         difference = 0;
     }
 
+
     const days =
-        Math.floor(difference / 86400000);
+        Math.floor(
+            difference / 86400000
+        );
+
 
     const hours =
         Math.floor(
-            difference % 86400000 / 3600000
+            difference % 86400000
+            / 3600000
         );
+
 
     const minutes =
         Math.floor(
-            difference % 3600000 / 60000
+            difference % 3600000
+            / 60000
         );
+
 
     const seconds =
         Math.floor(
-            difference % 60000 / 1000
+            difference % 60000
+            / 1000
         );
 
-    document.getElementById("days").textContent =
-        String(days).padStart(2, "0");
 
-    document.getElementById("hours").textContent =
-        String(hours).padStart(2, "0");
+    document.getElementById(
+        "days"
+    ).textContent =
+        String(days).padStart(2,"0");
 
-    document.getElementById("mins").textContent =
-        String(minutes).padStart(2, "0");
 
-    document.getElementById("secs").textContent =
-        String(seconds).padStart(2, "0");
+    document.getElementById(
+        "hours"
+    ).textContent =
+        String(hours).padStart(2,"0");
+
+
+    document.getElementById(
+        "minutes"
+    ).textContent =
+        String(minutes).padStart(2,"0");
+
+
+    document.getElementById(
+        "seconds"
+    ).textContent =
+        String(seconds).padStart(2,"0");
 }
+
 
 updateCountdown();
 
-setInterval(updateCountdown, 1000);
+setInterval(
+    updateCountdown,
+    1000
+);
 
 
-// Floating hearts and sparkles
+/* =========================================================
+   FLOATING LIGHT / HEART PARTICLES
+========================================================= */
 
 const canvas =
-    document.getElementById("canvas");
+    document.getElementById(
+        "particles"
+    );
 
 const ctx =
     canvas.getContext("2d");
 
+
 let particles = [];
+
+let W = 0;
+let H = 0;
+
 
 function resize() {
 
-    canvas.width =
+    W =
+        canvas.width =
         window.innerWidth;
 
-    canvas.height =
+    H =
+        canvas.height =
         window.innerHeight;
 }
+
 
 window.addEventListener(
     "resize",
     resize
 );
 
+
 resize();
 
-function createParticle() {
+
+function particle(
+    initial = false
+) {
 
     particles.push({
 
-        x: Math.random() * canvas.width,
+        x:
+            Math.random() * W,
 
-        y: canvas.height + 30,
+        y:
+            initial
+                ? Math.random() * H
+                : H + 20,
 
-        size: 6 + Math.random() * 18,
+        size:
+            Math.random() * 11 + 2,
 
-        speed: .25 + Math.random() * 1.05,
+        speed:
+            Math.random() * .55 + .15,
 
-        drift: (Math.random() - .5) * .45,
+        drift:
+            (Math.random()-.5)*.3,
 
-        alpha: .2 + Math.random() * .55,
+        opacity:
+            Math.random()*.45+.08,
 
-        heart: Math.random() > .22
+        heart:
+            Math.random() > .72,
+
+        angle:
+            Math.random()*Math.PI*2,
+
+        spin:
+            (Math.random()-.5)*.012
 
     });
 }
 
-function drawHeart(x, y, size) {
+
+for(let i=0;i<70;i++) {
+    particle(true);
+}
+
+
+function heart(x,y,s) {
 
     ctx.beginPath();
 
     ctx.moveTo(
         x,
-        y + size * .3
+        y+s*.3
     );
 
     ctx.bezierCurveTo(
-        x - size * .65,
-        y - size * .15,
-
-        x - size * .55,
-        y - size * .75,
-
+        x-s*.7,
+        y-s*.15,
+        x-s*.55,
+        y-s*.8,
         x,
-        y - size * .25
+        y-s*.25
     );
 
     ctx.bezierCurveTo(
-        x + size * .55,
-        y - size * .75,
-
-        x + size * .65,
-        y - size * .15,
-
+        x+s*.55,
+        y-s*.8,
+        x+s*.7,
+        y-s*.15,
         x,
-        y + size * .3
+        y+s*.3
     );
+
+    ctx.closePath();
 }
 
-function draw() {
+
+function render() {
 
     ctx.clearRect(
         0,
         0,
-        canvas.width,
-        canvas.height
+        W,
+        H
     );
 
-    if (particles.length < 65) {
 
-        for (let i = 0; i < 3; i++) {
-            createParticle();
-        }
+    while(
+        particles.length < 70
+    ) {
+        particle();
     }
 
-    for (
-        let i = particles.length - 1;
-        i >= 0;
+
+    for(
+        let i=particles.length-1;
+        i>=0;
         i--
     ) {
 
-        const p = particles[i];
+        const p =
+            particles[i];
+
 
         p.y -= p.speed;
+
         p.x += p.drift;
-        p.alpha *= .999;
 
-        if (p.y < -50) {
+        p.angle += p.spin;
 
-            particles.splice(i, 1);
+
+        if(
+            p.y < -30
+        ) {
+
+            particles.splice(i,1);
+
             continue;
         }
 
+
         ctx.save();
 
-        ctx.globalAlpha = p.alpha;
 
-        if (p.heart) {
+        ctx.globalAlpha =
+            p.opacity;
+
+
+        ctx.translate(
+            p.x,
+            p.y
+        );
+
+
+        ctx.rotate(
+            p.angle
+        );
+
+
+        if(p.heart) {
 
             ctx.shadowBlur = 18;
-            ctx.shadowColor =
-                "rgba(255,70,155,.8)";
 
-            drawHeart(
-                p.x,
-                p.y,
+            ctx.shadowColor =
+                "rgba(220,15,60,.8)";
+
+
+            heart(
+                0,
+                0,
                 p.size
             );
 
+
             ctx.fillStyle =
-                "rgba(255,95,170,.72)";
+                "rgba(220,15,60,.75)";
+
 
             ctx.fill();
 
@@ -510,30 +1489,104 @@ function draw() {
             ctx.beginPath();
 
             ctx.arc(
-                p.x,
-                p.y,
-                p.size * .16,
                 0,
-                Math.PI * 2
+                0,
+                p.size*.12,
+                0,
+                Math.PI*2
             );
 
+
             ctx.fillStyle =
-                "rgba(255,220,240,.9)";
+                "rgba(255,255,255,.9)";
+
 
             ctx.shadowBlur = 12;
 
-            ctx.shadowColor = "#fff";
+            ctx.shadowColor =
+                "#fff";
+
 
             ctx.fill();
         }
 
+
         ctx.restore();
     }
 
-    requestAnimationFrame(draw);
+
+    requestAnimationFrame(
+        render
+    );
 }
 
-draw();
+
+render();
+
+
+/* =========================================================
+   CINEMATIC MOUSE PARALLAX
+========================================================= */
+
+const scene =
+    document.querySelector(".scene");
+
+const hero =
+    document.querySelector(".hero");
+
+
+window.addEventListener(
+    "mousemove",
+    e => {
+
+        if(
+            window.innerWidth < 800
+        ) return;
+
+
+        const x =
+            e.clientX /
+            window.innerWidth -
+            .5;
+
+
+        const y =
+            e.clientY /
+            window.innerHeight -
+            .5;
+
+
+        scene.style.transform =
+            `translate(
+                ${x * -7}px,
+                ${y * -5}px
+            )`;
+
+
+        hero.style.transform =
+            `translate(
+                ${x * 2}px,
+                ${y * 2}px
+            )`;
+    }
+);
+
+
+/* =========================================================
+   RESET PARALLAX
+========================================================= */
+
+window.addEventListener(
+    "mouseleave",
+    () => {
+
+        scene.style.transform =
+            "translate(0,0)";
+
+        hero.style.transform =
+            "translate(0,0)";
+    }
+);
 
 </script>
 
